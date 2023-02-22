@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}中山選課通 選課表{% endblock %}
+{% block script %}
+    <div class="background">
+        <table class="table">
+            <thead class="table-secondary">
+            <tr>
+                <th scope="col">日期</th>
+                <th scope="col">星期一 Mon.</th>
+                <th scope="col">星期二 Tue.</th>
+                <th scope="col">星期三 Wed.</th>
+                <th scope="col">星期四 Thu..</th>
+                <th scope="col">星期五 Fri.</th>
+                <th scope="col">星期六 Sat.</th>
+                <th scope="col">星期日 Sun.</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for idx in range(7, 22) %}
+                {% if idx % 2 == 1 %}
+                    <tr class="table-light">
+                        <th scope="row">{{ idx }}:00<br></th>
+                        {% for idx2 in range(0, 7) %}
+                            <td></td>
+                        {% endfor %}
+                    </tr>
+                {% else %}
+                    <tr class="table-default">
+                        <th scope="row">{{ idx }}:00<br></th>
+                        {% for idx2 in range(0, 7) %}
+                            <td></td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="course-modal" class="modal fade" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">課程資料</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
